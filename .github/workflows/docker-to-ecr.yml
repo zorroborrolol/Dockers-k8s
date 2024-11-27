@@ -39,8 +39,18 @@ jobs:
       - name: Push to Amazon ECR
         run: docker push 539039282224.dkr.ecr.us-east-1.amazonaws.com/argocd-repo:latest
 
+      # Set up kubectl for EKS
+      - name: Set up kubectl for EKS
+        run: |
+          aws eks --region us-east-1 update-kubeconfig --name Cluster-for-gitops
+  
+      # Verify kubectl connection to EKS
+      - name: Verify kubectl connection
+        run: |
+          kubectl get nodes
+
       # Apply Kubernetes YAML files
       - name: Deploy to EKS
         run: |
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
+          kubectl apply -f deployment.yaml 
+          kubectl apply -f service.yaml 
