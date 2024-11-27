@@ -33,8 +33,8 @@ jobs:
 
       # Tag Docker image
       - name: Tag Docker Image
-        run: docker tag flask-web-app:latest 539039282224.dkr.ecr.us-east-1.amazonaws.com/flask-web-app:latest
+        run: docker tag flask-web-app:latest 539039282224.dkr.ecr.us-east-1.amazonaws.com/argocd-repo:latest
 
       # Push Docker image to Amazon ECR
       - name: Push to Amazon ECR
-        run: docker push 539039282224.dkr.ecr.us-east-1.amazonaws.com/flask-web-app:latest
+        run: docker push 539039282224.dkr.ecr.us-east-1.amazonaws.com/argocd-repo:latest
